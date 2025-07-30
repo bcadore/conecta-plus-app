@@ -1,5 +1,15 @@
+import PageHeader from './containers/PageHeader';
+import GlobalStyle, { PageContainer } from './styles';
+
 function App() {
-  return <div className="App"><h1>Olá Mundo</h1></div>;
+  return (
+    <>
+      <GlobalStyle />
+      <PageContainer>
+        <PageHeader />
+      </PageContainer>
+    </>
+  );
 }
 
 export default App;
