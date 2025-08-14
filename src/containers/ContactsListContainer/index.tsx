@@ -1,7 +1,9 @@
+import * as S from './styles';
+
 const ContactsListContainer = () => (
-  <main>
+  <S.Main>
     <p>Teste</p>
-  </main>
+  </S.Main>
 );
 
 export default ContactsListContainer;
