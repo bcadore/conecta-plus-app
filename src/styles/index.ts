@@ -10,8 +10,8 @@ const EstiloGlobal = createGlobalStyle`
 `;
 
 export const PageContainer = styled.div`
-    display: grid;
-    grid-template-columns: 224px auto;
-`
+  display: grid;
+  grid-template-columns: 224px auto;
+`;
 
 export default EstiloGlobal;
