@@ -1,22 +1,23 @@
 import ContatoComponent from '../../components/ContatoComponent';
 import * as S from './styles';
+import * as enums from '../../utils/enums/EnumContatos';
 
 const contatos = [
   {
     nomeContato: 'Teste1 teste1 teste1',
-    tagContato: 'Familia',
+    tagContato: enums.TagEnum.FAMILIA,
     telefoneContato: 48912345678,
     emailContato: 'teste1@teste.com',
   },
   {
     nomeContato: 'Teste2 teste2 teste2',
-    tagContato: 'Amizade',
+    tagContato: enums.TagEnum.AMIZADE,
     telefoneContato: 55912345678,
     emailContato: 'teste2@teste.com',
   },
   {
     nomeContato: 'Teste3 teste3 teste3',
-    tagContato: 'Trabalho',
+    tagContato: enums.TagEnum.TRABALHO,
     telefoneContato: 51912345678,
     emailContato: 'teste3@teste.com',
   },

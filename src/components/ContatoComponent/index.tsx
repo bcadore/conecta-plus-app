@@ -1,20 +1,26 @@
 import { useState } from 'react';
 import * as S from './styles';
+import * as enums from '../../utils/enums/EnumContatos';
 
 type Props = {
   nomeContato: string;
-  tagContato: string;
+  tagContato: enums.TagEnum;
   phoneContato: number;
   emailContato: string;
 };
 
-const ContatoComponent = ({ nomeContato, tagContato, phoneContato, emailContato }: Props) => {
+const ContatoComponent = ({
+  nomeContato,
+  tagContato,
+  phoneContato,
+  emailContato,
+}: Props) => {
   const [editando, setEditando] = useState(false);
 
   return (
     <S.Card>
       <S.CardTitle>{nomeContato}</S.CardTitle>
-      <S.Tag>{tagContato}</S.Tag>
+      <S.Tag tagContato={tagContato}>{tagContato}</S.Tag>
       <S.CardForm>
         <label htmlFor="Phone">Telefone:</label>
         <input type="tel" name="Phone" id="Phone" value={phoneContato} />
@@ -26,16 +32,16 @@ const ContatoComponent = ({ nomeContato, tagContato, phoneContato, emailContato 
         {editando ? (
           <>
             <S.CardButton>Salvar</S.CardButton>
-            <S.CardButton onClick={() => setEditando(false)}>
+            <S.CancelCardButton onClick={() => setEditando(false)}>
               Cancelar
-            </S.CardButton>
+            </S.CancelCardButton>
           </>
         ) : (
           <>
             <S.CardButton onClick={() => setEditando(true)}>
               Editar
             </S.CardButton>
-            <S.CardButton>Remover</S.CardButton>
+            <S.RemoveCardButton>Remover</S.RemoveCardButton>
           </>
         )}
       </S.CardAction>
