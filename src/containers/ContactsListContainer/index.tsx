@@ -4,19 +4,20 @@ import * as S from './styles';
 import { RootReducer } from '../../store';
 
 const ContactsListContainer = () => {
-  const { contatos } = useSelector((state: RootReducer) => state);
+  const { itens } = useSelector((state: RootReducer) => state.contatos);
 
   return (
     <S.Main>
       <p>Teste</p>
       <ul>
-        {contatos.map((c) => (
+        {itens.map((c) => (
           <li key={c.nomeContato}>
             <ContatoComponent
               nomeContato={c.nomeContato}
               tagContato={c.tagContato}
               phoneContato={c.phoneContato}
               emailContato={c.emailContato}
+              id={c.id}
             />
           </li>
         ))}
