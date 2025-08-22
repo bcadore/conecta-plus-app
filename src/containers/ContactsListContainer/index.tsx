@@ -5,12 +5,17 @@ import { RootReducer } from '../../store';
 
 const ContactsListContainer = () => {
   const { itens } = useSelector((state: RootReducer) => state.contatos);
+  const { termo } = useSelector((state: RootReducer) => state.filtro);
+
+  const filtraTarefas = () => {
+    return itens.filter((item) => item.nomeContato.toLowerCase().search(termo.toLocaleLowerCase()) >= 0);
+  };
 
   return (
     <S.Main>
-      <p>Teste</p>
+      <p>2 contatos filtrados como: {termo}.</p>
       <ul>
-        {itens.map((c) => (
+        {filtraTarefas().map((c) => (
           <li key={c.nomeContato}>
             <ContatoComponent
               nomeContato={c.nomeContato}
