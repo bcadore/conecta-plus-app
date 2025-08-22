@@ -3,14 +3,14 @@ import * as enums from '../utils/enums/EnumContatos';
 class Contato {
   nomeContato: string;
   tagContato: enums.TagEnum;
-  phoneContato: number;
+  phoneContato: string;
   emailContato: string;
   id: number;
 
   constructor(
     nomeContato: string,
     tagContato: enums.TagEnum,
-    phoneContato: number,
+    phoneContato: string,
     emailContato: string,
     id: number
   ) {

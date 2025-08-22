@@ -12,21 +12,21 @@ const initialState: ContatosState = {
       id: 1,
       nomeContato: 'Teste Teste Teste',
       tagContato: enums.TagEnum.FAMILIA,
-      phoneContato: 48911111111,
+      phoneContato: '48911111111',
       emailContato: 'teste@teste.com',
     },
     {
       id: 2,
       nomeContato: 'Teste2 Teste2 Teste2',
-      tagContato: enums.TagEnum.FAMILIA,
-      phoneContato: 48922222222,
+      tagContato: enums.TagEnum.AMIZADE,
+      phoneContato: '48922222222',
       emailContato: 'teste2@teste2.com',
     },
     {
       id: 3,
       nomeContato: 'Teste3 Teste3 Teste3',
-      tagContato: enums.TagEnum.FAMILIA,
-      phoneContato: 48933333333,
+      tagContato: enums.TagEnum.TRABALHO,
+      phoneContato: '48933333333',
       emailContato: 'teste3@teste3.com',
     },
   ],
@@ -41,9 +41,18 @@ const contatoSlice = createSlice({
         ...state.itens.filter((contato) => contato.id !== action.payload),
       ];
     },
+    editar: (state, action: PayloadAction<Contato>) => {
+      const tarefaIndex = state.itens.findIndex(
+        (c) => c.id === action.payload.id
+      );
+
+      if (tarefaIndex >= 0) {
+        state.itens[tarefaIndex] = action.payload;
+      }
+    },
   },
 });
 
-export const { remover } = contatoSlice.actions;
+export const { remover, editar } = contatoSlice.actions;
 
 export default contatoSlice.reducer;
