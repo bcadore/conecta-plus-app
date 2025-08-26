@@ -3,6 +3,7 @@ import FiltroComponent from '../../components/FiltroComponent';
 import * as S from './styles';
 import { RootReducer } from '../../store';
 import { alteraTermo } from '../../store/reducers/filtros';
+import * as enums from '../../utils/enums/EnumContatos'
 
 const AsideContainer = () => {
   const dispatch = useDispatch();
@@ -20,10 +21,11 @@ const AsideContainer = () => {
           onChange={(evento) => dispatch(alteraTermo(evento.target.value))}
         />
         <S.Filtros>
-          <FiltroComponent legenda="Familia" contador={5} ativo />
-          <FiltroComponent legenda="Trabalho" contador={4} />
-          <FiltroComponent legenda="Amigos" contador={9} />
-          <FiltroComponent legenda="Outros" contador={2} />
+          <FiltroComponent criterio="todas" legenda="Todas" />
+          <FiltroComponent criterio="tag" valor={enums.TagEnum.FAMILIA} legenda="Familia" />
+          <FiltroComponent criterio="tag" valor={enums.TagEnum.TRABALHO} legenda="Trabalho" />
+          <FiltroComponent criterio="tag" valor={enums.TagEnum.AMIZADE} legenda="Amigos" />
+          <FiltroComponent criterio="tag" valor={enums.TagEnum.OUTRO} legenda="Outros" />
         </S.Filtros>
       </div>
     </S.Aside>

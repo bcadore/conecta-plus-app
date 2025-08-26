@@ -5,15 +5,39 @@ import { RootReducer } from '../../store';
 
 const ContactsListContainer = () => {
   const { itens } = useSelector((state: RootReducer) => state.contatos);
-  const { termo } = useSelector((state: RootReducer) => state.filtro);
+  const { termo, criterio, valor } = useSelector(
+    (state: RootReducer) => state.filtro
+  );
 
   const filtraTarefas = () => {
-    return itens.filter((item) => item.nomeContato.toLowerCase().search(termo.toLocaleLowerCase()) >= 0);
+    let contatosFiltrados = itens;
+
+    if (termo !== undefined) {
+      contatosFiltrados = contatosFiltrados.filter(
+        (item) =>
+          item.nomeContato.toLowerCase().search(termo.toLocaleLowerCase()) >= 0
+      );
+
+      if (criterio === 'tag') {
+        contatosFiltrados = contatosFiltrados.filter(
+          (item) => item.tagContato === valor
+        );
+      }
+
+      return contatosFiltrados;
+    } else {
+      return itens;
+    }
   };
 
   return (
     <S.Main>
       <p>2 contatos filtrados como: {termo}.</p>
+      <ul>
+        <li>{termo}</li>
+        <li>{criterio}</li>
+        <li>{valor}</li>
+      </ul>
       <ul>
         {filtraTarefas().map((c) => (
           <li key={c.nomeContato}>
