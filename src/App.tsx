@@ -5,6 +5,7 @@ import EstiloGlobal, { PageContainer } from './styles';
 
 import store from './store';
 import Home from './pages/Home';
+import CadastraContato from './pages/CadastaContato';
 
 const rotas = createBrowserRouter([
   {
@@ -13,7 +14,7 @@ const rotas = createBrowserRouter([
   },
   {
     path: '/cadastraContato',
-    element: <h1>Cadastra Contato</h1>,
+    element: <CadastraContato />,
   },
 ]);
 

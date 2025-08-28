@@ -1,3 +1,4 @@
+import BotaoAddContato from '../../components/BotaoAddContato';
 import AsideContainer from '../../containers/AsideContainer';
 import ContactsListContainer from '../../containers/ContactsListContainer';
 
@@ -6,6 +7,7 @@ const Home = () => {
     <>
       <AsideContainer />
       <ContactsListContainer />
+      <BotaoAddContato />
     </>
   );
 };
