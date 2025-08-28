@@ -9,7 +9,7 @@ const ContactsListContainer = () => {
     (state: RootReducer) => state.filtro
   );
 
-  const filtraTarefas = () => {
+  const filtraContatos = () => {
     let contatosFiltrados = itens;
 
     if (termo !== undefined) {
@@ -30,16 +30,27 @@ const ContactsListContainer = () => {
     }
   };
 
+  const exibeResultado = (quantidade: number) => {
+    let mensagem = '';
+    const complemento =
+      termo !== undefined && termo.length > 0 ? `e "${termo}"` : '';
+
+    if (criterio === 'todas') {
+      mensagem = `${quantidade} contato(s) encontrado(s) como: "Todas" ${complemento}`;
+    } else {
+      mensagem = `${quantidade} contato(s) encontrado(s) como: "${`${valor}`}" ${complemento}`;
+    }
+
+    return mensagem;
+  };
+  const contatos = filtraContatos();
+  const mensagem = exibeResultado(contatos.length);
+
   return (
     <S.Main>
-      <p>2 contatos filtrados como: {termo}.</p>
+      <S.MensagemResultado>{mensagem}</S.MensagemResultado>
       <ul>
-        <li>{termo}</li>
-        <li>{criterio}</li>
-        <li>{valor}</li>
-      </ul>
-      <ul>
-        {filtraTarefas().map((c) => (
+        {contatos.map((c) => (
           <li key={c.nomeContato}>
             <ContatoComponent
               nomeContato={c.nomeContato}
