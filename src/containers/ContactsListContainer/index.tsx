@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import ContatoComponent from '../../components/ContatoComponent';
-import * as S from './styles';
+import * as S from '../../styles';
 import { RootReducer } from '../../store';
 
 const ContactsListContainer = () => {
@@ -47,8 +47,8 @@ const ContactsListContainer = () => {
   const mensagem = exibeResultado(contatos.length);
 
   return (
-    <S.Main>
-      <S.MensagemResultado>{mensagem}</S.MensagemResultado>
+    <S.MainContainer>
+      <S.PageTitle as={'p'}>{mensagem}</S.PageTitle>
       <ul>
         {contatos.map((c) => (
           <li key={c.nomeContato}>
@@ -62,7 +62,7 @@ const ContactsListContainer = () => {
           </li>
         ))}
       </ul>
-    </S.Main>
+    </S.MainContainer>
   );
 };
 

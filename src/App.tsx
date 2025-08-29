@@ -1,7 +1,7 @@
 import { Provider } from 'react-redux';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import EstiloGlobal, { PageContainer } from './styles';
+import EstiloGlobal, { AsideContainer } from './styles';
 
 import store from './store';
 import Home from './pages/Home';
@@ -22,9 +22,9 @@ function App() {
   return (
     <Provider store={store}>
       <EstiloGlobal />
-      <PageContainer>
+      <AsideContainer>
         <RouterProvider router={rotas} />
-      </PageContainer>
+      </AsideContainer>
     </Provider>
   );
 }
