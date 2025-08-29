@@ -35,13 +35,18 @@ const contatoSlice = createSlice({
       );
 
       if (contatoExiste) {
-        alert('já existe um contato cadastrado com este nome.');
+        alert('Já existe um contato cadastrado com este nome.');
       } else {
-        const ultimoContato = state.itens[state.itens.length - 1];
+        const maiorId = state.itens.reduce(
+          (max, contato) => (contato.id > max ? contato.id : max),
+          0
+        );
+
         const contatoNovo = {
           ...action.payload,
-          id: ultimoContato ? ultimoContato.id + 1 : 1,
+          id: maiorId + 1,
         };
+
         state.itens.push(contatoNovo);
       }
     },
