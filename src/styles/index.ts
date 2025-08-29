@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components';
+import variaveis from './variaveis';
 
 const EstiloGlobal = createGlobalStyle`
     * {
@@ -12,14 +13,21 @@ const EstiloGlobal = createGlobalStyle`
 
 export const AsideContainer = styled.div`
   display: grid;
-  grid-template-columns: 224px auto;
+  grid-template-columns: 15% auto;
+  min-width: 200px;
+  height: 100vh;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    height: auto;
+  }
 `;
 
 export const MainContainer = styled.div`
-  height: 100vh;
   padding: 0 16px;
-  overflow-y: scroll;
-  background-color: #0d1321;
+  overflow-y: auto;
+  background-color: ${variaveis.richBlackColor};
 `;
 
 export const PageTitle = styled.h2`
@@ -28,17 +36,29 @@ export const PageTitle = styled.h2`
   margin-bottom: 24px;
   font-size: 18px;
   font-weight: bold;
-  color: #FFF;
-`
+  color: ${variaveis.eggShellColor};
+`;
 
 export const BarraDeBusca = styled.input`
   width: 100%;
   padding: 8px;
   font-weight: bold;
-  color: #666666;
-  background-color: #f0ebd8;
-  border: 1px solid #666666;
+  color: ${variaveis.silverLakeColor};
+  background-color: ${variaveis.eggShellColor};
+  border: 1px solid ${variaveis.prussianBlueColor};
   border-radius: 8px;
+`;
+
+export const CardButton = styled.button`
+  margin-right: 8px;
+  padding: 8px 12px;
+  font-weight: bold;
+  font-size: 12px;
+  color: #f0ebd8;
+  background-color: ${variaveis.richBlackColor};
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
 `;
 
 export default EstiloGlobal;

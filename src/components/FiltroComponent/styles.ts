@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import variaveis from '../../styles/variaveis';
 
 type Props = {
   ativo: boolean;
@@ -6,10 +7,14 @@ type Props = {
 
 export const Card = styled.div<Props>`
   padding: 8px;
-  border: 1px solid ${(props) => (props.ativo ? '#F0EBD8' : '#1D2D44')};
+  border: 1px solid
+    ${(props) =>
+      props.ativo ? variaveis.eggShellColor : variaveis.prussianBlueColor};
   border-radius: 8px;
-  background-color: ${(props) => (props.ativo ? '#1D2D44' : '#F0EBD8')};
-  color: ${(props) => (props.ativo ? '#F0EBD8' : '#1D2D44')};
+  background-color: ${(props) =>
+    props.ativo ? 'none' : variaveis.eggShellColor};
+  color: ${(props) =>
+    props.ativo ? variaveis.eggShellColor : variaveis.prussianBlueColor};
   cursor: pointer;
 `;
 
@@ -21,4 +26,5 @@ export const Contador = styled.span`
 
 export const Label = styled.span`
   font-size: 14px;
+  font-weight: bold;
 `;

@@ -5,24 +5,28 @@ import { useNavigate } from 'react-router-dom';
 import { PageTitle, MainContainer, BarraDeBusca } from '../../styles/index';
 import * as S from './styles';
 import * as enums from '../../utils/enums/EnumContatos';
-import Contato from '../../models/Contato';
 import { cadastrar } from '../../store/reducers/contatos';
 
 const FormContainer = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [nome, setNome] = useState('');
-  const [telefone, setTelefone] = useState('');
-  const [email, setEmail] = useState('');
-  const [tag, setTag] = useState(enums.TagEnum.OUTRO);
+  const [nomeContato, setNomeContato] = useState('');
+  const [phoneContato, setPhoneContato] = useState('');
+  const [emailContato, setEmailContato] = useState('');
+  const [tagContato, setTagContato] = useState(enums.TagEnum.OUTRO);
 
   const cadastrarContato = (evento: FormEvent) => {
     evento.preventDefault();
 
-    const adicionarCadastro = new Contato(nome, tag, telefone, email, 9);
-
-    dispatch(cadastrar(adicionarCadastro));
+    dispatch(
+      cadastrar({
+        nomeContato,
+        tagContato,
+        phoneContato,
+        emailContato,
+      })
+    );
     navigate('/');
   };
 
@@ -33,8 +37,8 @@ const FormContainer = () => {
         <S.FormLabel htmlFor="NomeContato">Nome:</S.FormLabel>
         <BarraDeBusca
           type="text"
-          value={nome}
-          onChange={(evento) => setNome(evento.target.value)}
+          value={nomeContato}
+          onChange={(evento) => setNomeContato(evento.target.value)}
           id="NomeContato"
           name="NomeContato"
           placeholder="Informe o nome do contato"
@@ -43,8 +47,8 @@ const FormContainer = () => {
         <S.FormLabel htmlFor="TelContato">Telefone:</S.FormLabel>
         <BarraDeBusca
           type="tel"
-          value={telefone}
-          onChange={(evento) => setTelefone(evento.target.value)}
+          value={phoneContato}
+          onChange={(evento) => setPhoneContato(evento.target.value)}
           id="TelContato"
           name="TelContato"
           placeholder="Informe o telefone do contato"
@@ -53,8 +57,8 @@ const FormContainer = () => {
         <S.FormLabel htmlFor="EmailContato">Email:</S.FormLabel>
         <BarraDeBusca
           type="email"
-          value={email}
-          onChange={(evento) => setEmail(evento.target.value)}
+          value={emailContato}
+          onChange={(evento) => setEmailContato(evento.target.value)}
           id="EmailContato"
           name="EmailContato"
           placeholder="Informe o email do contato"
@@ -70,7 +74,7 @@ const FormContainer = () => {
                 name="tagContato"
                 id={tagContato}
                 onChange={(evento) =>
-                  setTag(evento.target.value as enums.TagEnum)
+                  setTagContato(evento.target.value as enums.TagEnum)
                 }
                 defaultChecked={tagContato === enums.TagEnum.OUTRO}
               />

@@ -3,8 +3,7 @@ import FormContainer from '../../containers/FormContainer';
 
 const CadastraContato = () => (
   <>
-    <AsideContainer />
-
+    <AsideContainer exibeFiltros={false} />
     <FormContainer />
   </>
 );

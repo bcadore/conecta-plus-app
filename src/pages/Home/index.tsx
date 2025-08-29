@@ -5,7 +5,7 @@ import ContactsListContainer from '../../containers/ContactsListContainer';
 const Home = () => {
   return (
     <>
-      <AsideContainer />
+      <AsideContainer exibeFiltros={true} />
       <ContactsListContainer />
       <BotaoAddContato />
     </>

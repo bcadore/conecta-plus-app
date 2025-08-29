@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import variaveis from '../../styles/variaveis';
 
 export const Aside = styled.aside`
   height: 100vh;
   padding: 16px;
-  background-color: #1d2d44;
+  background-color: ${variaveis.prussianBlueColor};
 `;
 
 export const Filtros = styled.div`

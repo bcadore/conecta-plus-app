@@ -50,7 +50,7 @@ const contatoSlice = createSlice({
         state.itens[tarefaIndex] = action.payload;
       }
     },
-    cadastrar: (state, action: PayloadAction<Contato>) => {
+    cadastrar: (state, action: PayloadAction<Omit<Contato, 'id'>>) => {
       const contatoExiste = state.itens.find(
         (contato) =>
           contato.nomeContato.toLocaleLowerCase() ===
@@ -60,7 +60,12 @@ const contatoSlice = createSlice({
       if (contatoExiste) {
         alert('já existe um contato cadastrado com este nome.');
       } else {
-        state.itens.push(action.payload);
+        const ultimoContato = state.itens[state.itens.length - 1];
+        const contatoNovo = {
+          ...action.payload,
+          id: ultimoContato ? ultimoContato.id + 1 : 1,
+        };
+        state.itens.push(contatoNovo);
       }
     },
   },

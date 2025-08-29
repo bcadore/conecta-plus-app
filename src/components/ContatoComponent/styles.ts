@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import variaveis from '../../styles/variaveis';
 
 import * as enums from '../../utils/enums/EnumContatos';
+import { CardButton } from '../../styles';
 
 type TagProps = {
   tagContato: enums.TagEnum;
@@ -9,19 +10,22 @@ type TagProps = {
 
 function retornaCorDeFundo(props: TagProps): string {
   if ('tagContato' in props) {
-    if (props.tagContato === enums.TagEnum.FAMILIA) return variaveis.richBlackColor;
-    if (props.tagContato === enums.TagEnum.AMIZADE) return variaveis.prussianBlueColor;
-    if (props.tagContato === enums.TagEnum.TRABALHO) return variaveis.paynesGrayColor;
-    return '#CCC';
+    if (props.tagContato === enums.TagEnum.FAMILIA)
+      return variaveis.richBlackColor;
+    if (props.tagContato === enums.TagEnum.AMIZADE)
+      return variaveis.prussianBlueColor;
+    if (props.tagContato === enums.TagEnum.TRABALHO)
+      return variaveis.paynesGrayColor;
+    return variaveis.silverLakeColor;
   }
 
-  return '#CCC';
+  return variaveis.silverLakeColor;
 }
 
 export const Card = styled.div`
-  margin-bottom: 16px;
+  width: 100%;
   padding: 16px;
-  background-color: #f0ebd8;
+  background-color: ${variaveis.eggShellColor};
   border-radius: 8px;
 `;
 
@@ -29,7 +33,7 @@ export const CardTitle = styled.h3`
   margin-bottom: 16px;
   font-size: 18px;
   font-weight: bold;
-  color: #0d1321;
+  color: ${variaveis.richBlackColor};
 `;
 
 export const Tag = styled.span<TagProps>`
@@ -55,26 +59,14 @@ export const CardForm = styled.form`
   input {
     width: 50%;
     padding: 8px;
-    border: 1px solid #0d1321;
+    border: 1px solid ${variaveis.richBlackColor};
     border-radius: 4px;
   }
 `;
 
 export const CardAction = styled.div`
-  border-top: 1px solid #0d1321;
+  border-top: 1px solid ${variaveis.richBlackColor};
   padding-top: 16px;
-`;
-
-export const CardButton = styled.button`
-  margin-right: 8px;
-  padding: 8px 12px;
-  font-weight: bold;
-  font-size: 12px;
-  color: #f0ebd8;
-  background-color: #0d1321;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
 `;
 
 export const CancelCardButton = styled(CardButton)`
